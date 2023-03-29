@@ -80,6 +80,32 @@
                     "interval_count": 1
                 }
             }
+        },
+
+
+        {
+            "name": "prod_test_1",
+            "path": "/v1/products",
+            "method": "post",
+            "params": {
+                "name": "Test 1 Name",
+                "description": "Test 1 Description"
+            }
+        },
+        {
+            "name": "price_test_1_month",
+            "path": "/v1/prices",
+            "method": "post",
+            "params": {
+                "product": "${prod_test_1:id}",
+                "currency": "usd",
+                "billing_scheme": "per_unit",
+                "unit_amount": 400,
+                "recurring": {
+                    "interval": "month",
+                    "interval_count": 1
+                }
+            }
         }
     ]
 }

@@ -50,3 +50,14 @@ a {
 .height-screen-helper {
   height: calc(100vh - 80px);
 }
+
+
+.prices-cotainer {
+  justify-content: center;
+  display: flex;
+}
+
+.prices-cotainer .prices-item {
+  max-width: 250px;
+  min-width: 249px;
+}
