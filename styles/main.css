@@ -61,3 +61,7 @@ a {
   max-width: 250px;
   min-width: 249px;
 }
+
+.user-name-container {
+  margin-top: 5px;
+}
