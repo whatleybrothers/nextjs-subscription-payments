@@ -24,11 +24,26 @@ const Navbar = () => {
               <Logo />
             </Link>
             <nav className="space-x-2 ml-6 hidden lg:block">
-              <Link href="/" className={s.link}>
-                Pricing
+              { !user &&
+                <Link href="/pricing" className={s.link}>
+                  Pricing
+                </Link>
+              }
+
+              {user &&
+                <Link href="/dashboard" className={s.link}>
+                  Dashboard
+                </Link>
+              }
+
+              {/*<Link href="/account" className={s.link}>*/}
+              {/*  Account*/}
+              {/*</Link>*/}
+              <Link href="/contact" className={s.link}>
+                Contact
               </Link>
-              <Link href="/account" className={s.link}>
-                Account
+              <Link href="/faqs" className={s.link}>
+                FAQs
               </Link>
             </nav>
           </div>
@@ -48,9 +63,15 @@ const Navbar = () => {
                 </span>
               </>
             ) : (
-              <Link href="/signin" className={s.link}>
-                Sign in
-              </Link>
+              <>
+                <Link href="/signin" className={s.link}>
+                  Login
+                </Link>
+                <Link href="/signin" className={s.link}>
+                  Register
+                </Link>
+              </>
+
             )}
           </div>
         </div>

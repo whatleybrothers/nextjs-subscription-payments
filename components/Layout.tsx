@@ -6,6 +6,7 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 
 import { PageMeta } from '../types';
+import LayoutWithLeftSidebar from '@/components/LayoutWithLeftSidebar';
 
 interface Props extends PropsWithChildren {
   meta?: PageMeta;
@@ -43,7 +44,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
         <meta name="twitter:image" content={meta.cardImage} />
       </Head>
       <Navbar />
-      <main id="skip">{children}</main>
+      <LayoutWithLeftSidebar>{children}</LayoutWithLeftSidebar>
       <Footer />
     </>
   );

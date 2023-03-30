@@ -7,7 +7,10 @@ import { postData } from '@/utils/helpers';
 import { getStripe } from '@/utils/stripe-client';
 import { useUser } from '@/utils/useUser';
 
-import { Price, ProductWithPrice } from 'types';
+import { Price, Product, ProductWithPrice } from '@/types';
+import { GetStaticPropsResult } from 'next';
+import { getActiveProductsWithPrices } from '@/utils/supabase-client';
+
 
 interface Props {
   products: ProductWithPrice[];
@@ -160,3 +163,15 @@ export default function Pricing({ products }: Props) {
     </section>
   );
 }
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+  const products = await getActiveProductsWithPrices();
+
+  return {
+    props: {
+      products
+    },
+    revalidate: 60
+  };
+}
+
