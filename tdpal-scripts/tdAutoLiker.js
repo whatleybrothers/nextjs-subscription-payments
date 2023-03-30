@@ -4,7 +4,7 @@
  * How to minify and ugligy this script?
  *  use https://skalman.github.io/UglifyJS-online/
  *  use these options in the site below for the mangling
- *  update generatedTinderAutoLiker.js so it can be used later
+ *  update generatedTdAutoLiker.js so it can be used later
     {
         parse: {
         bare_returns     : false,
