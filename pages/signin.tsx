@@ -7,11 +7,13 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import LoadingDots from '@/components/ui/LoadingDots';
 import Logo from '@/components/icons/Logo';
 import { getURL } from '@/utils/helpers';
+import { useUser as localUseUser } from '@/utils/useUser';
 
 const SignIn = () => {
   const router = useRouter();
   const user = useUser();
   const supabaseClient = useSupabaseClient();
+  const { authType } = localUseUser();
 
   useEffect(() => {
     if (user) {
@@ -32,6 +34,7 @@ const SignIn = () => {
               providers={[]}
               redirectTo={getURL()}
               magicLink={false}
+              view={authType === 'sign_in' ? 'sign_in' : 'sign_up'}
               appearance={{
                 theme: ThemeSupa,
                 variables: {

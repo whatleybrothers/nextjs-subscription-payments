@@ -10,7 +10,7 @@ import s from './Navbar.module.css';
 const Navbar = () => {
   const router = useRouter();
   const supabaseClient = useSupabaseClient();
-  const { user } = useUser();
+  const { user, setAuthType } = useUser();
 
   return (
     <nav className={s.root}>
@@ -64,10 +64,14 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link href="/signin" className={s.link}>
+                <Link href="/signin" className={s.link} onClick={() => {
+                  setAuthType('sign_in')
+                }}>
                   Login
                 </Link>
-                <Link href="/signin" className={s.link}>
+                <Link href="/signin" className={s.link} onClick={() => {
+                  setAuthType('sign_up')
+                }}>
                   Register
                 </Link>
               </>

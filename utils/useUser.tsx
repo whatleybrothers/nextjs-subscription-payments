@@ -13,6 +13,8 @@ type UserContextType = {
   userDetails: UserDetails | null;
   isLoading: boolean;
   subscription: Subscription | null;
+  authType: string;
+  setAuthType: (type: string) => void;
 };
 
 export const UserContext = createContext<UserContextType | undefined>(
@@ -34,6 +36,8 @@ export const MyUserContextProvider = (props: Props) => {
   const [isLoadingData, setIsloadingData] = useState(false);
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const [subscription, setSubscription] = useState<Subscription | null>(null);
+
+  const [authType, setAuthType] = useState<string>('sign_in');
 
   const getUserDetails = () => supabase.from('users').select('*').single();
   const getSubscription = () =>
@@ -71,7 +75,9 @@ export const MyUserContextProvider = (props: Props) => {
     user,
     userDetails,
     isLoading: isLoadingUser || isLoadingData,
-    subscription
+    subscription,
+    authType,
+    setAuthType
   };
 
   return <UserContext.Provider value={value} {...props} />;
